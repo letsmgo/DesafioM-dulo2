@@ -12,6 +12,10 @@ public class DesafioModulo2 {
 
         boolean chave = true;
         int opcao = 0;
+        String cpf = "";
+        String nome = "";
+        String email = "";
+        String telefone = "";
 
 
         //Apresentando o gerenciador.
@@ -20,39 +24,59 @@ public class DesafioModulo2 {
         System.out.println("de uma forma simplificada mas, sem perder os atributos tecnológicos!");
         System.out.println("Vamos começar?!\n");
 
-        while (chave == true){
+        while (chave == true) {
             //Menu interativo para o usuário.
             System.out.println("Digite 1: para inserir um funcionário;");
             System.out.println("Digite 2: para exibir a lista de funcionários cadastrados;");
-            System.out.println("Digite 3: para encerrar o YOU CAN");
+            System.out.println("Digite 3: para remover um funcionário do cadastro;");
+            System.out.println("Digite 4: para encerrar o YOU CAN.");
             opcao = input.nextInt();
             input.nextLine();
 
-            if(opcao == 1){
+            if (opcao == 1) {
                 //Cadastrando funcionários.
                 System.out.println("Digite o nome completo do funcionário: ");
-                String nome = input.nextLine();
+                nome = input.nextLine();
                 System.out.println("Agora digite o telefone de contato do funcionário: ");
-                String telefone = input.nextLine();
+                telefone = input.nextLine();
                 System.out.println("Digite o e-mail para cadastro: ");
-                String email = input.nextLine();
+                email = input.nextLine();
                 System.out.println("Agora digite o CPF do funcionário: ");
-                String cpf = input.nextLine();
-                funcionarios.put("CPF: " + cpf + " ", " Nome: " + nome + " Telefone: " + telefone + " E-mail: " + email + ".");
+                cpf = input.nextLine();
+                funcionarios.put(cpf, " Nome: " +nome+ " Telefone: " +telefone+ " E-mail: " +email+ ".");
                 System.out.println("Funcionário cadastrado com sucesso!");
                 System.out.println("\n O que deseja fazer agora? ");
             }
-            else if (opcao == 2){
+            else if (opcao == 2) {
                 //Exibindo a lista de funcionários.
                 System.out.println("\nSegue abaixo todos os funcionários cadastrados: ");
                 System.out.println(funcionarios);
                 System.out.println();
+                System.out.println("\nO que deseja fazer agora? ");
             }
-            else if( opcao == 3) {
+            else if (opcao == 3){
+                //Removendo um funcionário do gerenciador.
+                System.out.println("Digite o CPF do funcionário a ser removido");
+                String cpfASerDeletado = input.nextLine();
+                String cpfDeletado = "";
+
+                for (String cpfFuncionario : funcionarios.keySet()){
+                    if (cpfFuncionario.equals(cpfASerDeletado)){
+                        System.out.println("Funcionário removido com sucesso.");
+                        cpfDeletado = cpfASerDeletado;
+                    }
+                }
+                funcionarios.remove(cpfDeletado);
+            }
+            else if (opcao == 4) {
                 //Finalizando o gerenciador.
                 System.out.println("YOU CAN finalizado com sucesso");
-                chave =false;
+                chave = false;
             }
+
+
         }
     }
 }
+
+
