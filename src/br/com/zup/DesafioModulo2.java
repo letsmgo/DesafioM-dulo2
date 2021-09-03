@@ -10,6 +10,9 @@ public class DesafioModulo2 {
         Scanner input = new Scanner(System.in);
         Map<String, String> funcionarios = new HashMap<>();
 
+        boolean chave = true;
+        int opcao = 0;
+
 
         //Apresentando o gerenciador.
         System.out.println("\n             Bem vinde ao gerenciador de funcionários 'YOU CAN'\n");
@@ -17,22 +20,39 @@ public class DesafioModulo2 {
         System.out.println("de uma forma simplificada mas, sem perder os atributos tecnológicos!");
         System.out.println("Vamos começar?!\n");
 
-        //Inserindo um funcionário no gerenciador.
-        System.out.println("Começaremos com a inserção de um funcionário novo na plataforma.");
-        System.out.println("Por gentileza digite o nome completo do funcionário que deseja incluir: ");
-        String nome = input.nextLine();
-        System.out.println("Agora insira o telefone de contato pertecente a este funcionário: ");
-        String telefone = input.nextLine();
-        System.out.println("Me informe agora o e-mail do funcionário: ");
-        String email = input.nextLine();
-        System.out.println("Por ultimo e não menos importante, o CPF do funcionário: ");
-        String cpf = input.nextLine();
+        while (chave == true){
+            //Menu interativo para o usuário.
+            System.out.println("Digite 1: para inserir um funcionário;");
+            System.out.println("Digite 2: para exibir a lista de funcionários cadastrados;");
+            System.out.println("Digite 3: para encerrar o YOU CAN");
+            opcao = input.nextInt();
+            input.nextLine();
 
-        funcionarios.put( "CPF " +cpf + " ", " Nome: " + nome + ", Telefone: " + telefone + ", E-mail: " + email + ".");
-
-        System.out.println("Segue abaixo a listagem dos funcionários cadastrados: ");
-        System.out.println(funcionarios);
-
-
+            if(opcao == 1){
+                //Cadastrando funcionários.
+                System.out.println("Digite o nome completo do funcionário: ");
+                String nome = input.nextLine();
+                System.out.println("Agora digite o telefone de contato do funcionário: ");
+                String telefone = input.nextLine();
+                System.out.println("Digite o e-mail para cadastro: ");
+                String email = input.nextLine();
+                System.out.println("Agora digite o CPF do funcionário: ");
+                String cpf = input.nextLine();
+                funcionarios.put("CPF: " + cpf + " ", " Nome: " + nome + " Telefone: " + telefone + " E-mail: " + email + ".");
+                System.out.println("Funcionário cadastrado com sucesso!");
+                System.out.println("\n O que deseja fazer agora? ");
+            }
+            else if (opcao == 2){
+                //Exibindo a lista de funcionários.
+                System.out.println("\nSegue abaixo todos os funcionários cadastrados: ");
+                System.out.println(funcionarios);
+                System.out.println();
+            }
+            else if( opcao == 3) {
+                //Finalizando o gerenciador.
+                System.out.println("YOU CAN finalizado com sucesso");
+                chave =false;
+            }
+        }
     }
 }
