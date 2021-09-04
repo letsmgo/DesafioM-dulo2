@@ -43,40 +43,55 @@ public class DesafioModulo2 {
                 email = input.nextLine();
                 System.out.println("Agora digite o CPF do funcionário: ");
                 cpf = input.nextLine();
-                funcionarios.put(cpf, " Nome: " +nome+ " Telefone: " +telefone+ " E-mail: " +email+ ".");
-                System.out.println("Funcionário cadastrado com sucesso!");
-                System.out.println("\n O que deseja fazer agora? ");
-            }
-            else if (opcao == 2) {
+                if (funcionarios.size() != 0) {
+                    for (String verificarCpf : funcionarios.keySet()) {
+                        if (verificarCpf.equals(cpf)) {
+                            System.out.println("CPF já foi inserido!");
+                        } else {
+                            System.out.println("Funcionário cadastrado com sucesso!");
+                            System.out.println("\n O que deseja fazer agora? ");
+                        }
+
+                    }
+                } else {
+                    funcionarios.put(cpf, " Nome: " + nome + ". Telefone: " + telefone + ". E-mail: " + email + ".");
+                    System.out.println("Funcionário cadastrado com sucesso!");
+                    System.out.println("\n O que deseja fazer agora? ");
+                }
+                funcionarios.put(cpf, " Nome: " + nome + ". Telefone: " + telefone + ". E-mail: " + email + ".");
+
+            } else if (opcao == 2) {
                 //Exibindo a lista de funcionários.
-                System.out.println("\nSegue abaixo todos os funcionários cadastrados: ");
-                System.out.println(funcionarios);
-                System.out.println();
-                System.out.println("\nO que deseja fazer agora? ");
-            }
-            else if (opcao == 3){
+                for (String referencia : funcionarios.keySet()) {
+                    System.out.println(funcionarios.get(referencia) + " CPF: " + referencia);
+
+                }
+            } else if (opcao == 3) {
                 //Removendo um funcionário do gerenciador.
                 System.out.println("Digite o CPF do funcionário a ser removido");
                 String cpfASerDeletado = input.nextLine();
                 String cpfDeletado = "";
 
-                for (String cpfFuncionario : funcionarios.keySet()){
-                    if (cpfFuncionario.equals(cpfASerDeletado)){
+                for (String cpfFuncionario : funcionarios.keySet()) {
+                    if (cpfFuncionario.equals(cpfASerDeletado)) {
                         System.out.println("Funcionário removido com sucesso.");
                         cpfDeletado = cpfASerDeletado;
                     }
                 }
                 funcionarios.remove(cpfDeletado);
-            }
-            else if (opcao == 4) {
+            } else if (opcao == 4) {
                 //Finalizando o gerenciador.
                 System.out.println("YOU CAN finalizado com sucesso");
                 chave = false;
+            } else {
+                System.out.println("Opção não reconhecida, por favor, digite uma opção válida.\n");
             }
-
 
         }
     }
 }
+
+
+
 
 
